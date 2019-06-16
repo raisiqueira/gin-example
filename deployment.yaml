@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-gin-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: go-gin-app
+  template:
+    metadata:
+      labels:
+        name: go-gin-app
+    spec:
+      containers:
+        - name: go-app
+          image: raisiqueira/gin-go:1.0.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
